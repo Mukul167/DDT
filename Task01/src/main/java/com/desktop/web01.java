@@ -23,7 +23,7 @@ public class web01 {
     private WebDriver chromeDriver;
     private WebDriver firefoxDriver;
     private String screenshotFileName;
-
+    
     @BeforeMethod
     public void setUp() throws Exception {
        
@@ -32,27 +32,49 @@ public class web01 {
         Date currentDate = new Date();
         screenshotFileName = currentDate.toString().replace(" ", "-").replace(":", "-");
         System.out.println(screenshotFileName);
-
+    }
+        @Test(priority=1)
+        public void OpenChrome() throws Exception {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--disable-notifications");
         chromeDriver = new ChromeDriver(chromeOptions);
+        
 
-        FirefoxOptions firefoxOptions = new FirefoxOptions();
-        firefoxOptions.addPreference("dom.webnotifications.enabled", false);
-        firefoxDriver = new FirefoxDriver(firefoxOptions);
-    }
+        List<Dimension> resolutions = new ArrayList<>();
+        resolutions.add(new Dimension(1920, 1080));
+        resolutions.add(new Dimension(1366, 768));
+        resolutions.add(new Dimension(1536, 864));
+        captureScreenshotsForDevice(chromeDriver, "desktop", resolutions);
+        chromeDriver.quit();
+        
+        }
+		/*
+		 * FirefoxOptions firefoxOptions = new FirefoxOptions();
+		 * firefoxOptions.addPreference("dom.webnotifications.enabled", false);
+		 * firefoxDriver = new FirefoxDriver(firefoxOptions);
+		 */
+        
 
-    @Test
+    @Test(priority = 2)
+    
     public void captureScreenshots() throws Exception {
+		
+    	FirefoxOptions firefoxOptions = new FirefoxOptions();
+		firefoxOptions.addPreference("dom.webnotifications.enabled", false);
+		firefoxDriver = new FirefoxDriver(firefoxOptions);
+		 
+		 
         List<Dimension> resolutions = new ArrayList<>();
         resolutions.add(new Dimension(1920, 1080));
         resolutions.add(new Dimension(1366, 768));
         resolutions.add(new Dimension(1536, 864));
 
-        captureScreenshotsForDevice(chromeDriver, "desktop", resolutions);
+       // captureScreenshotsForDevice(chromeDriver, "desktop", resolutions);
         captureScreenshotsForDevice(firefoxDriver, "desktop", resolutions);
+        firefoxDriver.quit();
     }
-
+   
+    
     public void captureScreenshotsForDevice(WebDriver driver, String deviceName, List<Dimension> resolutions) throws Exception {
         for (Dimension resolution : resolutions) {
             int width = resolution.getWidth();
@@ -71,8 +93,8 @@ public class web01 {
     @AfterMethod
     public void End() throws Exception {
       
-        chromeDriver.quit();
-        firefoxDriver.quit();
+       // chromeDriver.quit();
+        //firefoxDriver.quit();
         ScreenRecorderUtil.stopRecord();
     }
 }

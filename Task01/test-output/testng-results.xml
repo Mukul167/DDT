@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-05-10T23:30:34 IST" name="Default suite" finished-at="2024-05-10T23:31:20 IST" duration-ms="45885">
+  <suite started-at="2024-09-04T14:22:11 IST" name="Default suite" finished-at="2024-09-04T14:22:17 IST" duration-ms="6269">
     <groups>
     </groups>
-    <test started-at="2024-05-10T23:30:34 IST" name="Default test" finished-at="2024-05-10T23:31:20 IST" duration-ms="45885">
-      <class name="com.mobile.web01">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.mobile.web01@dbf57b3]" started-at="2024-05-10T23:30:34 IST" name="setUp" finished-at="2024-05-10T23:30:38 IST" duration-ms="4461" status="PASS">
+    <test started-at="2024-09-04T14:22:11 IST" name="Default test" finished-at="2024-09-04T14:22:17 IST" duration-ms="6269">
+      <class name="com.functional.dealsdray">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.functional.dealsdray@f5ac9e4]" started-at="2024-09-04T14:22:11 IST" name="setUp" finished-at="2024-09-04T14:22:13 IST" duration-ms="2088" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="captureScreenshots()[pri:0, instance:com.mobile.web01@dbf57b3]" started-at="2024-05-10T23:30:38 IST" name="captureScreenshots" finished-at="2024-05-10T23:31:18 IST" duration-ms="39303" status="PASS">
+        <test-method signature="loginAndUploadFile()[pri:0, instance:com.functional.dealsdray@f5ac9e4]" started-at="2024-09-04T14:22:13 IST" name="loginAndUploadFile" finished-at="2024-09-04T14:22:17 IST" duration-ms="4059" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- captureScreenshots -->
-        <test-method is-config="true" signature="End()[pri:0, instance:com.mobile.web01@dbf57b3]" started-at="2024-05-10T23:31:18 IST" name="End" finished-at="2024-05-10T23:31:20 IST" duration-ms="2094" status="PASS">
+        </test-method> <!-- loginAndUploadFile -->
+        <test-method is-config="true" signature="stopRecording()[pri:0, instance:com.functional.dealsdray@f5ac9e4]" started-at="2024-09-04T14:22:17 IST" name="stopRecording" finished-at="2024-09-04T14:22:17 IST" duration-ms="92" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- End -->
-      </class> <!-- com.mobile.web01 -->
+        </test-method> <!-- stopRecording -->
+      </class> <!-- com.functional.dealsdray -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

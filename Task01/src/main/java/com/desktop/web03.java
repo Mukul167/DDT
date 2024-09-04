@@ -20,59 +20,74 @@ import com.mobile.ScreenRecorderUtil;
 
 public class web03 {
 
-    private WebDriver chromeDriver;
-    private WebDriver firefoxDriver;
-    private String screenshotFileName;
+	private WebDriver chromeDriver;
+	private WebDriver firefoxDriver;
+	private String screenshotFileName;
 
-    @BeforeMethod
-    public void setUp() throws Exception {
-       
-        ScreenRecorderUtil.startRecord("web03-DeskTop");
+	@BeforeMethod
+	public void setUp() throws Exception {
 
-        Date currentDate = new Date();
-        screenshotFileName = currentDate.toString().replace(" ", "-").replace(":", "-");
-        System.out.println(screenshotFileName);
+		ScreenRecorderUtil.startRecord("web03-DeskTop");
 
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--disable-notifications");
-        chromeDriver = new ChromeDriver(chromeOptions);
+		Date currentDate = new Date();
+		screenshotFileName = currentDate.toString().replace(" ", "-").replace(":", "-");
+		System.out.println(screenshotFileName);
+	}
 
-        FirefoxOptions firefoxOptions = new FirefoxOptions();
-        firefoxOptions.addPreference("dom.webnotifications.enabled", false);
-        firefoxDriver = new FirefoxDriver(firefoxOptions);
-    }
+	@Test(priority = 1)
+	public void OpenChrome() throws Exception {
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--disable-notifications");
+		chromeDriver = new ChromeDriver(chromeOptions);
+		List<Dimension> resolutions = new ArrayList<>();
+		resolutions.add(new Dimension(1920, 1080));
+		resolutions.add(new Dimension(1366, 768));
+		resolutions.add(new Dimension(1536, 864));
+		captureScreenshotsForDevice(chromeDriver, "desktop", resolutions);
+		/*
+		 * FirefoxOptions firefoxOptions = new FirefoxOptions();
+		 * firefoxOptions.addPreference("dom.webnotifications.enabled", false);
+		 * firefoxDriver = new FirefoxDriver(firefoxOptions);
+		 */
+	}
 
-    @Test
-    public void captureScreenshots() throws Exception {
-        List<Dimension> resolutions = new ArrayList<>();
-        resolutions.add(new Dimension(1920, 1080));
-        resolutions.add(new Dimension(1366, 768));
-        resolutions.add(new Dimension(1536, 864));
+	@Test(priority = 2)
+	public void OpenFireFox() throws Exception {
 
-        captureScreenshotsForDevice(chromeDriver, "desktop", resolutions);
-        captureScreenshotsForDevice(firefoxDriver, "desktop", resolutions);
-    }
+		FirefoxOptions firefoxOptions = new FirefoxOptions();
+		firefoxOptions.addPreference("dom.webnotifications.enabled", false);
 
-    public void captureScreenshotsForDevice(WebDriver driver, String deviceName, List<Dimension> resolutions) throws Exception {
-        for (Dimension resolution : resolutions) {
-            int width = resolution.getWidth();
-            int height = resolution.getHeight();
-            Dimension dimension = new Dimension(width, height);
-            driver.manage().window().setSize(dimension);
-            driver.get("https://www.getcalley.com/calley-pro-features");
+		List<Dimension> resolutions = new ArrayList<>();
+		resolutions.add(new Dimension(1920, 1080));
+		resolutions.add(new Dimension(1366, 768));
+		resolutions.add(new Dimension(1536, 864));
 
-            String filePath = "D:\\Pictures\\Desktop\\";
-            String filename = deviceName + "_" + width + "x" + height + "_" + screenshotFileName + ".png";
+		// captureScreenshotsForDevice(chromeDriver, "desktop", resolutions);
+		captureScreenshotsForDevice(firefoxDriver, "desktop", resolutions);
+	}
 
-            Shutterbug.shootPage(driver, Capture.FULL, true).save(filePath + filename);
-        }
-    }
+	public void captureScreenshotsForDevice(WebDriver driver, String deviceName, List<Dimension> resolutions)
+			throws Exception {
+		for (Dimension resolution : resolutions) {
+			int width = resolution.getWidth();
+			int height = resolution.getHeight();
+			Dimension dimension = new Dimension(width, height);
+			driver.manage().window().setSize(dimension);
+			driver.get("https://www.getcalley.com/see-a-demo/");
 
-    @AfterMethod
-    public void End() throws Exception {
-      
-        chromeDriver.quit();
-        firefoxDriver.quit();
-        ScreenRecorderUtil.stopRecord();
-    }
+			String filePath = "D:\\Pictures\\Desktop\\";
+			String filename = deviceName + "_" + width + "x" + height + "_" + screenshotFileName + ".png";
+
+			Shutterbug.shootPage(driver, Capture.FULL, true).save(filePath + filename);
+		}
+	}
+
+	@AfterMethod
+	public void End() throws Exception {
+
+		/*
+		 * chromeDriver.quit(); firefoxDriver.quit();
+		 */
+		ScreenRecorderUtil.stopRecord();
+	}
 }

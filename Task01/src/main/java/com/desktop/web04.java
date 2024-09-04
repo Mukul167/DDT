@@ -59,7 +59,7 @@ public class web04 {
             int height = resolution.getHeight();
             Dimension dimension = new Dimension(width, height);
             driver.manage().window().setSize(dimension);
-            driver.get("https://www.getcalley.com/best-auto-dialer-app");
+            driver.get("https://www.getcalley.com/calley-teams-features/");
 
             String filePath = "D:\\Pictures\\Desktop\\";
             String filename = deviceName + "_" + width + "x" + height + "_" + screenshotFileName + ".png";

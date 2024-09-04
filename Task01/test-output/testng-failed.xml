@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.desktop.web01">
+      <class name="com.functional.dealsdray">
         <methods>
+          <include name="loginAndUploadFile"/>
+          <include name="stopRecording"/>
           <include name="setUp"/>
-          <include name="captureScreenshots"/>
-          <include name="End"/>
         </methods>
-      </class> <!-- com.desktop.web01 -->
+      </class> <!-- com.functional.dealsdray -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -57,7 +57,7 @@ public class web03 {
             int height = resolution.getHeight();
             Dimension dimension = new Dimension(width, height);
             driver.manage().window().setSize(dimension);
-            driver.get("https://www.getcalley.com/calley-pro-features");
+            driver.get("https://www.getcalley.com/see-a-demo/");
 
             String filepath = "D:\\Pictures\\Mobile\\";
             String filename = deviceName + "_" + width + "x" + height + "_" + screenshotFileName + ".png";
